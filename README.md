@@ -173,8 +173,8 @@ Create configuration files:
 
 Add the stages:
 
-* `java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -s -i basic -n setTitleStage gaston/setTitleStage.properties` 
-* `java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -s -i debug -n stdOutStage gaston/stdOutStage.properties` 
+* `java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -s -i basic -n setTitleStage setTitleStage.properties`
+* `java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -s -i debug -n stdOutStage stdOutStage.properties`
 
 Start hydra by running `java -jar core/target/hydra-core-jar-with-dependencies.jar`
 
