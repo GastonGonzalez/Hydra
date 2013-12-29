@@ -138,8 +138,8 @@ Build the following projects by running `mvn clean install`
 
 Insert the libraries to hydra:
 
-* 	`java -jar inserter-jar-with-dependencies.jar -a -p pipeline -l -i basic basic-jar-with-dependencies.jar`
-* 	 `java -jar inserter-jar-with-dependencies.jar -a -p pipeline -l -i debug debugging-jar-with-dependencies.jar`
+*	`java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -l -i basic stages/processing/basic/target/hydra-basic-stages.jar`
+* 	`java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -l -i debug stages/debugging/debugging/target/hydra-debugging-jar-with-dependencies.jar`
 
 Create configuration files:
 
@@ -161,7 +161,7 @@ Create configuration files:
 ```
 
 	{
-		stageClass: "com.findwise.hydra.debugging.StdoutOutput"
+		stageClass: "com.findwise.hydra.debugging.StdoutOutput",
 		query : { 
 			"touched" : { 
 				"setTitleStage" : true 
@@ -173,18 +173,16 @@ Create configuration files:
 
 Add the stages:
 
-* `java -jar inserter-jar-with-dependencies.jar -a -p pipeline -s -i basic -n setTitleStage setTitleStage.properties` 
-* `java -jar inserter-jar-with-dependencies.jar -a -p pipeline -s -i debug -n stdOutStage stdOutStage.properties` 
+* `java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -s -i basic -n setTitleStage gaston/setTitleStage.properties` 
+* `java -jar tools/inserter/target/hydra-inserter-jar-with-dependencies.jar -a -p pipeline -s -i debug -n stdOutStage gaston/stdOutStage.properties` 
 
-Start hydra by running `java -jar hydra-core.jar`
+Start hydra by running `java -jar core/target/hydra-core-jar-with-dependencies.jar`
 
 Everything is now up and running. To add a document for processing, just type
 
 ```
-
-	java -cp hydra-debugging-jar-with-dependencies.jar com.findwise.hydra.debugging.StdinInput 
+	java -cp stages/debugging/debugging/target/hydra-debugging-jar-with-dependencies.jar com.findwise.hydra.debugging.StdinInput
 	"{\"contents\":{\"text\":\"This is my text\"}}"
-
 ```
 
 Hydra will print out the processed document, that should contain a title aswell as the imported text.
