@@ -17,6 +17,28 @@ If you need to set any of the configuration parameters (such as database authent
 
 Put your `admin-service.properties` in that directory and the admin service should load it when initiated.
 
+Jetty Configuration
+--------------------
+
+ 1. Begin by moving into the `admin-service` directoy.
+
+ 	`$ cd admin-service`
+
+ 2. Copy `admin-service.properties` to the root of this directory.
+
+    `$ cp src/main/resources/admin-service.properties .`
+
+ 3. Edit `admin-service.properties` and change the value of `database.url` from `localhost` to 
+    `mongodb://localhost:27017`. Note: 27017 is the default MongoDB port; change this value as needed.
+
+    `$ sed -i '' 's/localhost/mongodb:\/\/localhost:27017/g' admin-service.properties`
+
+ 4. Start Jetty.
+
+    `$ mvn jetty:run`
+
+ 5. Open a web browser and visit: [http://localhost:8080/hydra-admin-service/](http://localhost:8080/hydra-admin-service/)
+
 Available endpoints
 ----------------
 
